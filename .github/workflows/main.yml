@@ -3,6 +3,12 @@ name: Create YouTube Plus app
 on:
   workflow_dispatch:
     inputs:
+      use_patched:
+        description: "Использовать патченную версию (v5.2.1-p без Patreon)"
+        type: boolean
+        required: true
+        default: true
+
       enable_youpip:
         description: "Integrate YouPiP"
         type: boolean
@@ -84,6 +90,8 @@ jobs:
       enable_ytabc: ${{ inputs.enable_ytabc }}
       enable_demc: ${{ inputs.enable_demc }}
       tweak_version: ${{ inputs.tweak_version }}
+      #если use_patched = true, подставляем ссылку, иначе пустая строка
+      tweak_url: ${{ inputs.use_patched && 'https://github.com/01M/YTLite/releases/download/v5.2.1-p/com.dvntm.ytlite_5.2.1_iphoneos-arm.deb' || '' }}
 
   package:
     name: Package IPA
