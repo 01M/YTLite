@@ -57,6 +57,12 @@ on:
         required: true
         type: string
 
+      tweak_url:
+        description: "Direct URL to a custom YouTube Plus .deb (overrides tweak_version). Clear to use the official version."
+        default: "https://github.com/01M/YTLite/releases/download/deb6/com.dvntm.ytlite_6.0_iphoneos-arm.deb"
+        required: false
+        type: string
+
       display_name:
         description: "App Name (Optional)"
         default: "YouTube"
@@ -91,6 +97,7 @@ jobs:
       enable_demc: ${{ inputs.enable_demc }}
       enable_localization: ${{ inputs.enable_localization }}
       tweak_version: ${{ inputs.tweak_version }}
+      tweak_url: ${{ inputs.tweak_url }}
 
   package:
     name: Package IPA
